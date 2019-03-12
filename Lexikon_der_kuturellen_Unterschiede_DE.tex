@@ -1,7 +1,6 @@
 \documentclass[headinclude,footinclude, draft]{scrbook}
 \usepackage[a4paper]{geometry}
-\usepackage{xeCJK}
-\usepackage{ctex}
+\usepackage{ragged2e}
 %\usepackage{amsmath}
 %\usepackage{xcolor}
 %\usepackage{titlesec}
@@ -18,12 +17,12 @@
 \usepackage[eulerchapternumbers]{classicthesis}
 \usepackage{arsclassica}
 \usepackage{changepage}
-\usepackage{indentfirst}
 \strictpagecheck
 
 \renewcommand\epigraphflush{flushright}
 \renewcommand\epigraphsize{\normalsize}
 \setlength\epigraphwidth{0.7\textwidth}
+
 
 \definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
 
@@ -152,8 +151,6 @@
 		\hspace{10pt}\vline} }{10pt}%
 {\spacedallcaps}[\vspace*{5cm}\chapterdecoration]
 
-\setlength\parskip{1em}
-\setlength\parindent{4em}
 \begin{document}
 	\begin{titlepage}
 		
@@ -207,8 +204,14 @@
 	\makeatletter
 	\@addtoreset{figure}{section}
 	\makeatother
-	\include{foreword_CN}
+	\setlength\parskip{1em}
+	\setlength\parindent{0em}
+	\include{foreword_DE}
 	\tableofcontents
 	\cleardoubleemptypage
-	\include{Essen_zwischen_china_und_deutschland/Essen_zwischen_china_und_deutschland_CN}
+	
+	\setlength\parskip{1em}
+	\setlength\parindent{0em}
+	\include{Essen_zwischen_china_und_deutschland/Essen_zwischen_china_und_deutschland_DE}
+	\chapter{Kulturelle Unterschiede des Feier\-tags}
 \end{document}
