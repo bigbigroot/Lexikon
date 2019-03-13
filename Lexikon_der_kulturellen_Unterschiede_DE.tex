@@ -1,6 +1,7 @@
 \documentclass[headinclude,footinclude, draft]{scrbook}
 \usepackage[a4paper]{geometry}
 \usepackage{ragged2e}
+\usepackage{titletoc}
 %\usepackage{amsmath}
 %\usepackage{xcolor}
 %\usepackage{titlesec}
@@ -9,6 +10,7 @@
 \usepackage{epigraph}
 \usepackage{lipsum}
 \usetikzlibrary{trees}
+\usetikzlibrary{shadows.blur}
 \usepackage{listings}
 \usepackage{graphicx}        % standard LaTeX graphics tool
 \usepackage{float}
@@ -23,7 +25,14 @@
 \renewcommand\epigraphsize{\normalsize}
 \setlength\epigraphwidth{0.7\textwidth}
 
-
+\newcommand{\printmyminitoc}{\noindent\hspace{-2cm}
+	\begin{tikzpicture}
+	\node[rounded corners,align=left,fill=blue!green, blur shadow={shadow blur steps=5}]{%
+		\color{white}%
+		\begin{minipage}{8cm}%minipage trick
+		\printcontents[chapters]{}{1}{}
+		\end{minipage}};
+	\end{tikzpicture}}
 \definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
 
 \DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.5in}
@@ -140,6 +149,8 @@
 	++(\anglei:2.5) coordinate[pos=0.3] (d);
 	\draw
 	(d) -- +(\angleii:1);
+	
+	\filldraw[line width=0,rounded corners=0] (0,4) rectangle (\linewidth,4.05);
 	\end{scope}
 	\end{tikzpicture}%
 }
@@ -149,7 +160,7 @@
 {\Huge\sffamily}
 {{\color{halfgray}\chapterNumber\thechapter%
 		\hspace{10pt}\vline} }{10pt}%
-{\spacedallcaps}[\vspace*{5cm}\chapterdecoration]
+{\spacedallcaps}[\vspace*{3cm}\chapterdecoration]
 
 \begin{document}
 	\begin{titlepage}
@@ -193,7 +204,6 @@
 				\center{\printauthor}
 			\end{minipage}
 	\end{titlepage}
-	
 	\cleardoubleemptypage
 	\renewcommand{\cftdot}{$\cdot$}
 	\renewcommand\thefigure{\thesection-\arabic{figure}}
@@ -210,8 +220,5 @@
 	\tableofcontents
 	\cleardoubleemptypage
 	
-	\setlength\parskip{1em}
-	\setlength\parindent{0em}
 	\include{Essen_zwischen_china_und_deutschland/Essen_zwischen_china_und_deutschland_DE}
-	\chapter{Kulturelle Unterschiede des Feier\-tags}
 \end{document}
