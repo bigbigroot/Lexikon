@@ -1,15 +1,11 @@
-\documentclass[headinclude,footinclude, draft]{scrbook}
+\documentclass[ headinclude,footinclude]{scrbook}
 \usepackage[a4paper]{geometry}
 \usepackage{ragged2e}
 \usepackage{titletoc}
 \usepackage{amsmath}
-\usepackage{xcolor}
+\usepackage[dvips]{xcolor}
 \usepackage[ngerman]{babel}
 \usepackage{tikz}
-\usepackage{epigraph}
-\usepackage{lipsum}
-\usetikzlibrary{trees}
-\usetikzlibrary{shadows.blur}
 \usepackage{listings}
 \usepackage{graphicx}        % standard LaTeX graphics tool
 \usepackage{float}
@@ -24,29 +20,37 @@ dottedtoc % Dotted lines leading to the page numbers in the table of contents
 \usepackage{arsclassica}
 \usepackage[strict]{changepage}
 \usepackage{titlesec}
+\usepackage{fontspec}
 \usepackage[T1]{fontenc} 
+\usepackage{xcoffins}
 \strictpagecheck
 
-\pagestyle{scrheadings} 
-\renewcommand\epigraphflush{flushright}
-\renewcommand\epigraphsize{\normalsize}
-\setlength\epigraphwidth{0.7\textwidth}
 
 \definecolor{halfgray}{gray}{0.55}%定义所需颜色
 \definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
 
-\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.5in}
+\definecolor{RoyalBlue}{cmyk}{1,.60,0,.40}
 
+\newfontfamily\mybold{Alegreya-Bold}
+\newfontfamily\myregular{Alegreya-Regular}
+%\newfontfamily\dinprolight{AlegreyaSans-Light}
+
+\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{it}{0.5in}
+% Set up commands for title page generation
+\definecolor{ethblue}{RGB}{31, 64, 122}
+
+
+\graphicspath{ {image/} }
 
 \makeatletter                       
 \def\printauthor{%                  
-	{\@author}}              
+	{\large\@author}}              
 \makeatother
 \author{%
-	%\large \textbf{Chinese-German Institute for Applied Engineering(CDAI) } \\ 
-	\large \textbf{Chinesisch-Deutschen Institut für Angewandte Ingenieurwissenschaften (CDAI)}
-	\textbf{}\\
-	\large \textbf{webseit: }\texttt{http://cdai.zust.edu.cn/} 
+	\center
+	\textbf{Chinesisch-Deutschen Institut für Angewandte Ingenieurwissenschaften (CDAI)} \\	
+	\vspace*{2em}
+	\texttt{http://cdai.zust.edu.cn/}
 }
 
 % The following code is borrowed from: https://tex.stackexchange.com/a/86310/10898
@@ -150,7 +154,7 @@ dottedtoc % Dotted lines leading to the page numbers in the table of contents
 	\draw
 	(d) -- +(\angleii:1);
 	
-	\filldraw[line width=0,rounded corners=0] (0,4) rectangle (\linewidth,4.05);
+	\filldraw[line width=0,rounded corners=0] (0,3) rectangle (\linewidth,3.05);
 	\end{scope}
 	\end{tikzpicture}%
 }
@@ -160,36 +164,13 @@ dottedtoc % Dotted lines leading to the page numbers in the table of contents
 {{\color{halfgray}\chapterNumber\thechapter%
 		\hspace{10pt}\vline} }{10pt}%
 {\spacedallcaps}[\vspace*{3cm}\chapterdecoration]
+
 \begin{document}
-	\begin{titlepage}
-		
-		\noindent
-		\titlefont Lexikon der kuturellen Unterschiede zwischen Deutschland und China\par
-		\epigraph{\justify Heutzutage gewinnt der deutsch-chinesische Austausch immer mehr an Bedeutung, aber die kul\-turellen Unter\-schiede zwischen den beiden Seiten erschweren diese Kommunikation. Das Lexikon soll diese Kommunikation erleichtern und die Unterschiede klären.}%
-		{Über Lexikon der kutrurellen Unterschiede}
-		\null\vfill
-		\vspace*{4cm}
-		\noindent
-		\hfill
-		
-		\begin{minipage}{\linewidth}
-				\center{\printauthor}
-		\end{minipage}
-		%
-		%\begin{minipage}{0.02\linewidth}
-			%\rule{1pt}{125pt}
-		%\end{minipage}
-		\titlepagedecoration
-		
-	\end{titlepage}
-	
+	\input{title}
 	\cleardoubleemptypage
-	
-	\begin{titlepage}
+		\begin{titlepage}
 			\noindent
-			\titlefont Lexikon der kuturellen Unterschiede zwischen Deutschland und China\par
-			\epigraph{\justify Heutzutage gewinnt der deutsch-chinesische Austausch immer mehr an Bedeutung, aber die kulturellen Unterschiede zwischen den beiden Seiten erschweren diese Kommunikation. Das Lexikon soll diese Kommunikation erleichtern und die Unterschiede klären.}%
-			{Über Lexikon der kutrurellen Unterschiede}
+			\titlefont Lexikon der kuturellen \\  Unterschiede zwischen \\ Deutschland und China\par
 			\null\vfill
 			\vspace*{6cm}
 			\noindent
@@ -198,19 +179,23 @@ dottedtoc % Dotted lines leading to the page numbers in the table of contents
 			\begin{minipage}{\linewidth}
 				\center{\printauthor}
 			\end{minipage}
-	\end{titlepage}
+		\end{titlepage}
 	\cleardoubleemptypage
 	\renewcommand{\cftdot}{$\cdot$}
 	\renewcommand\thefigure{\thesection-\arabic{figure}}
 	\renewcommand\thetable{\thesection-\arabic{table}}
+	\newcommand{\mypar}{\par\noindent}
+	\setlength\parskip{0.7em}
 	\makeatletter
 	\@addtoreset{table}{section}
 	\makeatother
 	\makeatletter
 	\@addtoreset{figure}{section}
 	\makeatother
-	\setlength\parskip{1em}
+	
+	\pagestyle{empty}
 	\include{foreword_DE}
+	\pagestyle{scrheadings} 
 	\tableofcontents
 	\cleardoubleemptypage
 	\input{Chapter_DE}
