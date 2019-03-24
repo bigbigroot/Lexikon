@@ -1,8 +1,7 @@
-\documentclass[ headinclude,footinclude]{scrbook}
+\documentclass[12pt]{ctexbook}
 \usepackage{xeCJK}
-\usepackage[adobefonts]{ctex}
+\usepackage{ctex}
 \usepackage[a4paper]{geometry}
-\usepackage{ragged2e}
 \usepackage{titletoc}
 \usepackage{amsmath}
 \usepackage[dvips]{xcolor}
@@ -12,19 +11,8 @@
 \usepackage{float}
 \usepackage{tocloft}
 %\usepackage{fancyhdr}
-\usepackage[
-%nochapters, % Turn off chapters since this is an article        
-eulermath,% Use the Euler font for mathematics
-%pdfspacing, % Makes use of pdftex’ letter spacing capabilities via the microtype package
-dottedtoc % Dotted lines leading to the page numbers in the table of contents
-]{classicthesis}
-\usepackage{arsclassica}
-\usepackage[strict]{changepage}
 \usepackage{titlesec}
-\usepackage{fontspec}
-\usepackage[T1]{fontenc} 
 \usepackage{xcoffins}
-\strictpagecheck
 
 \def\mytitle{中德文化差异小百科}
 \def\mytext{Projekt4}
@@ -34,16 +22,16 @@ dottedtoc % Dotted lines leading to the page numbers in the table of contents
 
 \definecolor{RoyalBlue}{cmyk}{1,.60,0,.40}
 
-\newfontfamily\mybold{FZXingKai-S04}
-\newfontfamily\myregular{Alegreya-Regular}
+\newfontfamily{\mybold}{AR PL Mingti2L Big5}
+\newfontfamily{\myregular}{AR PL Mingti2L Big5}
 %\newfontfamily\dinprolight{AlegreyaSans-Light}
 
-\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{bt}{0.4in}
+%\DeclareFixedFont{\titlefont}{T1}{ppl}{b}{bt}{0.4in}
+\newcommand{\myfont}{\Huge\heiti}
 % Set up commands for title page generation
 \definecolor{ethblue}{RGB}{31, 64, 122}
 
 
-\graphicspath{ {image/} }
 
 \makeatletter                       
 \def\printauthor{%                  
@@ -52,90 +40,90 @@ dottedtoc % Dotted lines leading to the page numbers in the table of contents
 
 \author{%
 	\center
-	\textbf{Chinesisch-Deutschen Institut für Angewandte Ingenieurwissenschaften (CDAI)} \\	
+	\textbf{中德工程师学院(CDAI)} \\	
 	\vspace*{1em}
 	\texttt{http://cdai.zust.edu.cn/}
 }
-
-% The following code is borrowed from: https://tex.stackexchange.com/a/86310/10898
-
-\newcommand\anglei{-45}%定义角度
-\newcommand\angleii{45}
-\newcommand\angleiii{225}
-\newcommand\angleiv{135}
-%绘制版面镶边代码
-\newcommand\chapterdecoration{%
-	\begin{tikzpicture}[remember picture,overlay,shorten >= -10pt]
-	\coordinate (aux1) at ([yshift=-15pt]current page.north east);
-	\coordinate (aux2) at ([yshift=-410pt]current page.north east);
-	\coordinate (aux3) at ([xshift=-4.5cm]current page.north east);
-	\coordinate (aux4) at ([yshift=-150pt]current page.north east);
-	\checkoddpage
-	\ifoddpage
-	\else
-	\coordinate (aux1) at ([yshift=-15pt]current page.north west);
-	\coordinate (aux2) at ([yshift=-410pt]current page.north west);
-	\coordinate (aux3) at ([xshift=4.5cm]current page.north west);
-	\coordinate (aux4) at ([yshift=-150pt]current page.north west);
-	\renewcommand\anglei{-135}
-	\renewcommand\angleii{135}
-	\renewcommand\angleiii{-45}
-	\renewcommand\angleiv{45}
-	\fi
-	\begin{scope}[halfgray!40,line width=12pt,rounded corners=12pt]
-	\draw
-	(aux1) -- coordinate (a)
-	++(\angleiii:5) --
-	++(\anglei:5.1) coordinate (b);
-	\draw[shorten <= -10pt]
-	(aux3) --
-	(a) --
-	(aux1);
-	\draw[opacity=0.6,halfgray,shorten <= -10pt]
-	(b) --
-	++(\angleiii:2.2) --
-	++(\anglei:2.2);
-	\end{scope}
-	\draw[halfgray,line width=8pt,rounded corners=8pt,shorten <= -10pt]
-	(aux4) --
-	++(\angleiii:0.8) --
-	++(\anglei:0.8);
-	\begin{scope}[halfgray!70,line width=6pt,rounded corners=8pt]
-	\draw[shorten <= -10pt]
-	(aux2) --
-	++(\angleiii:3) coordinate[pos=0.45] (c) --
-	++(\anglei:3.1);
-	\draw
-	(aux2) --
-	(c) --
-	++(\angleiv:2.5) --
-	++(\angleii:2.5) --
-	++(\anglei:2.5) coordinate[pos=0.3] (d);
-	\draw
-	(d) -- +(\angleii:1);
-	
-	\filldraw[line width=0,rounded corners=0] (0,3) rectangle (\linewidth,3.05);
-	\end{scope}
-	\end{tikzpicture}%
-}
-
-\titleformat{\chapter}[display]%
-{\normalfont\Huge\sffamily}%
-{{\color{halfgray}\chapterNumber\thechapter%
-		\hspace{10pt}\vline} }{10pt}%
-{\spacedallcaps}[\vspace*{3cm}\chapterdecoration]
+%
+%% The following code is borrowed from: https://tex.stackexchange.com/a/86310/10898
+%
+%\newcommand\anglei{-45}%定义角度
+%\newcommand\angleii{45}
+%\newcommand\angleiii{225}
+%\newcommand\angleiv{135}
+%%绘制版面镶边代码
+%\newcommand\chapterdecoration{%
+%	\begin{tikzpicture}[remember picture,overlay,shorten >= -10pt]
+%	\coordinate (aux1) at ([yshift=-15pt]current page.north east);
+%	\coordinate (aux2) at ([yshift=-410pt]current page.north east);
+%	\coordinate (aux3) at ([xshift=-4.5cm]current page.north east);
+%	\coordinate (aux4) at ([yshift=-150pt]current page.north east);
+%	\checkoddpage
+%	\ifoddpage
+%	\else
+%	\coordinate (aux1) at ([yshift=-15pt]current page.north west);
+%	\coordinate (aux2) at ([yshift=-410pt]current page.north west);
+%	\coordinate (aux3) at ([xshift=4.5cm]current page.north west);
+%	\coordinate (aux4) at ([yshift=-150pt]current page.north west);
+%	\renewcommand\anglei{-135}
+%	\renewcommand\angleii{135}
+%	\renewcommand\angleiii{-45}
+%	\renewcommand\angleiv{45}
+%	\fi
+%	\begin{scope}[halfgray!40,line width=12pt,rounded corners=12pt]
+%	\draw
+%	(aux1) -- coordinate (a)
+%	++(\angleiii:5) --
+%	++(\anglei:5.1) coordinate (b);
+%	\draw[shorten <= -10pt]
+%	(aux3) --
+%	(a) --
+%	(aux1);
+%	\draw[opacity=0.6,halfgray,shorten <= -10pt]
+%	(b) --
+%	++(\angleiii:2.2) --
+%	++(\anglei:2.2);
+%	\end{scope}
+%	\draw[halfgray,line width=8pt,rounded corners=8pt,shorten <= -10pt]
+%	(aux4) --
+%	++(\angleiii:0.8) --
+%	++(\anglei:0.8);
+%	\begin{scope}[halfgray!70,line width=6pt,rounded corners=8pt]
+%	\draw[shorten <= -10pt]
+%	(aux2) --
+%	++(\angleiii:3) coordinate[pos=0.45] (c) --
+%	++(\anglei:3.1);
+%	\draw
+%	(aux2) --
+%	(c) --
+%	++(\angleiv:2.5) --
+%	++(\angleii:2.5) --
+%	++(\anglei:2.5) coordinate[pos=0.3] (d);
+%	\draw
+%	(d) -- +(\angleii:1);
+%	
+%	\filldraw[line width=0,rounded corners=0] (0,3) rectangle (\linewidth,3.05);
+%	\end{scope}
+%	\end{tikzpicture}%
+%}
+%
+%%\titleformat{\chapter}[display]%
+%%{\normalfont\Huge\sffamily}%
+%%{{\color{halfgray}\chapterNumber\thechapter%
+%%		\hspace{10pt}\vline} }{10pt}%
+%%{\spacedallcaps}[\vspace*{3cm}\chapterdecoration]
 
 \begin{document}
 	\pagestyle{empty}
-	\input{title}
+	\input{cover}
 	\newpage
 	\begin{titlepage}
-		\vspace*{6cm}
+		\vspace*{4cm}
 		\noindent
 		\center
-		\titlefont \mytitle \par
+		\myfont \mytitle \par
 		\null
-		\vspace*{12.5cm}
+		\vspace*{9.5cm}
 		\noindent
 		\hfill
 		
@@ -157,7 +145,7 @@ dottedtoc % Dotted lines leading to the page numbers in the table of contents
 	\makeatother
 	
 	\include{foreword_CN}
+	\pagestyle{headings}
 	\tableofcontents
-	\cleardoubleemptypage
-	\input{Chapter_CN}
+	%\input{Chapter_CN}
 \end{document}
